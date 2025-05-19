@@ -10,9 +10,13 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::with('todo')->where('user_id', Auth::id())->get();
+        $categories = Category::with('todo')  // relasi banyak todo dari kategori
+            ->where('user_id', Auth::id())
+            ->get();
+
         return view('category.index', compact('categories'));
     }
+
 
     public function create()
     {
